@@ -4,10 +4,10 @@ function scriptToExecute() {
             this.href = decodeURIComponent(this.href.split('target=')[1]);
         });
     }
-    $(document).ajaxComplete(function() {
+    replaceLinks();
+    document.body.addEventListener("DOMNodeInserted", function() {
         replaceLinks();
     });
-    replaceLinks();
 }
 var script = document.createElement('script');
 script.appendChild(document.createTextNode('(' + scriptToExecute + ')();'));
